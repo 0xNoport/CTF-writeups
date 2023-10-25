@@ -120,7 +120,8 @@ We don't get any output, which means it ran without any errors. On the windows V
 
 Restart Immunity Debugger and start the program (unpause it).
 
-### Get the amount of bytes till EIP will be overwritten.
+### Get the amount of bytes to overwrite EIP
+
 
 
 
