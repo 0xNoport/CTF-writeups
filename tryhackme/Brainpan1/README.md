@@ -18,6 +18,7 @@ Now we perform a portscan using nmap
 nmap -p- $ip -T4 -O -osscan-guess
 ```
 
+
 We use option
 
 -p- to scan for all ports,
