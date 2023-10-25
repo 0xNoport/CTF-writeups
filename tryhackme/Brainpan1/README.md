@@ -50,17 +50,17 @@ We download the file found using wget.
 wget http://$ip:10000/brainpan.exe
 ```
 <br>
-<br>
+
 We will transfer the file over to one of our Windows VMs to test if the executable is vulnerable to a buffer overflow and craft our payload. The windows VM will act as our victim. We use python to create a webserver that hosts the file.
 
 ```
 python3 -m http.server 80
 ```
-
+<br>
 **-m** to specify the http.server module<br>
 **80** to specify the port<br>
 <br>
-<br>
+
 On our own Windows VM we will download the file using PowerShell:
 ```
 iwr -uri http://our-attacker-vm-ip(other interface)/brainpan.exe -outfile brainpan.exe
