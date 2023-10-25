@@ -28,5 +28,6 @@ We use option:<br>
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/00872e20-ea3e-418f-b303-02ad7c527e94)
 
-![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/8a388cb5-92f9-48ac-b8e2-d6a931f5f284)
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/9d24dd32-b1f3-4a14-b2c0-fb1d470649cb)
+
 
