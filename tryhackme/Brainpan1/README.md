@@ -1,4 +1,4 @@
-![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/e05a1448-258a-4454-98ab-bdaf79764f36)
+
 # Walkthrough
 
 ## Basic Enumeration
