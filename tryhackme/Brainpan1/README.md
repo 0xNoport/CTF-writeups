@@ -20,6 +20,7 @@ nmap -p- $ip -T4 -O -osscan-guess
 We use option
 
 -p- to scan for all ports,
+
 -T4 for selecting a fast portscan (T<0-5>)
 
 -O to fingerprint the operating system
