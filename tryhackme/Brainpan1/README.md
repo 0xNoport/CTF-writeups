@@ -5,7 +5,7 @@ Before starting the machine, we connect to the OpenVPN network using openvpn:
 ```
 sudo openvpn ./vpn-file
 ```
-<br>
+
 After starting the machine, we get the IP address of our target. 
 For convenience i create an environment variable that contains the IP:
 
