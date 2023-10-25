@@ -40,7 +40,20 @@ gobuster dir -u http://$ip:10000/ -w /usr/share/wordlists/ -x ".exe"
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/5e2a90d5-0dc7-4372-aabf-8c5eac041671)
 
-By running the previous command, we find a hidden directory that is accessible on the webserver: /bin. We do manual enumeration and find a file called brainpan.exe. 
+By running the previous command, we find a hidden directory that is accessible on the webserver. We do manual enumeration and find a file called brainpan.exe, which seems to be the program running on the victim machine on port 9999, which must be vulnerable to a buffer overflow as stated in the description of the machine (we will verify it in the following). 
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/1ef441b5-6780-4677-888b-ef6bf63918e6)
+
+We download the file found using wget.
+
+```wget http://$ip:10000/brainpan.exe```
+
+We will transfer the file over to one of our Windows VMs to test if the executable is vulnerable to a buffer overflow and craft our payload. The windows VM will act as our victim. We use python to create a webserver that hosts the file.
+
+```python3 -m http.server 80```
+**-m** to specify the http.server module<br>
+**80** to specify the port<br>
+
+
+On our own Windows
 
