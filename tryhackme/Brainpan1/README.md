@@ -1,6 +1,8 @@
 
 # Walkthrough
 
+## Basic Enumeration
+
 Before starting the machine, we connect to the OpenVPN network using openvpn:
 ```
 sudo openvpn ./vpn-file
