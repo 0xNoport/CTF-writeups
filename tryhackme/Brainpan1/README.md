@@ -166,4 +166,4 @@ We see that the EIP has this value 35724134. The EIP is the instruction pointer 
 ```
 /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 3000 -q 35724134
 ```
-This outputs the amount of characters that a user has to input, till the EIP is overwritten. 
+This outputs the amount of characters that a user has to input, till the EIP is overwritten, which is 524 in this case. 
