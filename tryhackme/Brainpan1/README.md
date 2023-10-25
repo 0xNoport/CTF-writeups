@@ -71,4 +71,6 @@ iwr -uri http://our-attacker-vm-ip(other interface)/brainpan.exe -outfile brainp
 **-uri** to specify the url<br>
 **-outfile** to specify the relative destination path<br>
 
+<br>
+We will use Immunity Debugger to debug the executable. It can be downloaded [here](https://www.immunityinc.com/products/debugger/).
 
