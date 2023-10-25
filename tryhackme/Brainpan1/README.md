@@ -113,6 +113,7 @@ python3 script.py
 
 We don't get any output, which means it ran without any errors. On the windows VM, we see that the program crashed because a segmentation fault occurred.
 
-![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/9f997f3d-a0fc-4fa5-bdf8-cffab62f301d)
+![Uploading grafik.png…]()
+
 
 
