@@ -30,4 +30,10 @@ We use option:<br>
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/9d24dd32-b1f3-4a14-b2c0-fb1d470649cb)
 
-
+According to the output of nmap, there is a webserver running on port 10000. Now, we will scan the webserver and search for hidden files/folders using gobuster:
+```
+gobuster dir -u http://$ip:10000/ -w /usr/share/wordlists/ -x ".exe"
+```
+**-u** to specify the url
+**-w** to specify a wordlist
+**-x** to specify a file extension that should be added to each entry to the list additionally
