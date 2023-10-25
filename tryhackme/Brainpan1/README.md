@@ -20,10 +20,10 @@ nmap -p- $ip -T4 -O -osscan-guess
 <br>
 
 **We use option**<br>
--p- to scan for all ports,<br>
--T4 for selecting a fast portscan (T<0-5>)<br>
--O to fingerprint the operating system<br>
--osscan-guess to guess the operating system when the OS fingerprint (-O) is inaccurate<br>
+**-p-** to scan for all ports,<br>
+**-T4** for selecting a fast portscan (T<0-5>)<br>
+**-O** to fingerprint the operating system<br>
+**-osscan-guess** to guess the operating system when the OS fingerprint (-O) is inaccurate<br>
 
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/00872e20-ea3e-418f-b303-02ad7c527e94)
