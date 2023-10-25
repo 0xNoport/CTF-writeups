@@ -55,7 +55,7 @@ We will transfer the file over to one of our Windows VMs to test if the executab
 ```
 python3 -m http.server 80
 ```
-<br>
+
 **-m** to specify the http.server module<br>
 **80** to specify the port<br>
 
