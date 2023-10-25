@@ -54,10 +54,19 @@ We will transfer the file over to one of our Windows VMs to test if the executab
 
 ```
 python3 -m http.server 80
-```<br>
+```
+<br>
 **-m** to specify the http.server module<br>
 **80** to specify the port<br>
 
 
-On our own Windows
+On our own Windows VM we will download the file using PowerShell:
+```
+iwr -uri http://our-attacker-vm-ip(other interface)/brainpan.exe -outfile brainpan.exe
+```
+
+**iwr** is an alias for Invoke-WebRequest<br>
+**-uri** to specify the url<br>
+**-outfile** to specify the relative destination path<br>
+
 
