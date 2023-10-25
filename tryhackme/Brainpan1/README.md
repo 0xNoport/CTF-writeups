@@ -22,3 +22,5 @@ We use option
 -T4 for selecting a fast portscan (T<0-5>)
 -O to fingerprint the operating system
 -osscan-guess to guess the operating system when the OS fingerprint (-O) is inaccurate
+
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/00872e20-ea3e-418f-b303-02ad7c527e94)
