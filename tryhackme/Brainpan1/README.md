@@ -156,7 +156,7 @@ python3 script.py
 ```
 
 
-On the windows machine we get another access violation and see that the program stopped again. Now we copy the value of the EIP register to the windows machine. #35724134
+On the windows machine we get another access violation and see that the program stopped again. Now we copy the value of the EIP register to the windows machine. 
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/9dc84f0d-d4e9-4924-8754-a0e43e74b625)
 
