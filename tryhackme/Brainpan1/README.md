@@ -41,5 +41,6 @@ gobuster dir -u http://$ip:10000/ -w /usr/share/wordlists/ -x ".exe"
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/5e2a90d5-0dc7-4372-aabf-8c5eac041671)
 
 By running the previous command, we find a hidden directory that is accessible from the webserver: /bin. <br>We do manual enumeration and find a file called brainpan.exe
+
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/1ef441b5-6780-4677-888b-ef6bf63918e6)
 
