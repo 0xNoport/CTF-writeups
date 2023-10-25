@@ -34,6 +34,6 @@ According to the output of nmap, there is a webserver running on port 10000. Now
 ```
 gobuster dir -u http://$ip:10000/ -w /usr/share/wordlists/ -x ".exe"
 ```
-**-u** to specify the url
-**-w** to specify a wordlist
-**-x** to specify a file extension that should be added to each entry to the list additionally
+**-u** to specify the url<br>
+**-w** to specify a wordlist<br>
+**-x** to specify a file extension that should be added to each entry to the list additionally<br>
