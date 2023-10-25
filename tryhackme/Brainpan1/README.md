@@ -76,3 +76,6 @@ We will use Immunity Debugger to debug the executable.
 <br>
 
 It can be downloaded [here](https://www.immunityinc.com/products/debugger/).
+
+## Verifying the buffer overflow vulnerability
+
