@@ -37,3 +37,7 @@ gobuster dir -u http://$ip:10000/ -w /usr/share/wordlists/ -x ".exe"
 **-u** to specify the url<br>
 **-w** to specify a wordlist<br>
 **-x** to specify a file extension that should be added to each entry to the list additionally<br>
+
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/5e2a90d5-0dc7-4372-aabf-8c5eac041671)
+
+By running the previous command, we find a hidden directory that is accessible from the webserver: /bin
