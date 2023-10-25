@@ -84,3 +84,7 @@ It can be downloaded [here](https://www.immunityinc.com/products/debugger/).
 Right click on Immunity Debugger and hit "Run as administrator". Once opened, goto File -> Open and select the executable, then once loaded click on the red arrow to the right to unpause.
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/db4cc07e-008f-4aa4-9afa-cf022b05c456)
+
+As we can see in the bottom-right-hand corner, the program is now running:
+
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/1f5c7a0e-7e3a-454b-9bab-0ad7d4ebfc66)
