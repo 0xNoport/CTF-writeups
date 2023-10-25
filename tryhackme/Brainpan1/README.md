@@ -116,5 +116,7 @@ We don't get any output, which means it ran without any errors. On the windows V
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/ea43186d-4c3c-4909-beb8-c388c117d5b0)
 
 
+## Crafting our payload to get a shell on the target
+
 
 
