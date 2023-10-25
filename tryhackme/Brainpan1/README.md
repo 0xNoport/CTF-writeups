@@ -118,5 +118,9 @@ We don't get any output, which means it ran without any errors. On the windows V
 
 ## Crafting our payload to get a shell on the target
 
+Restart Immunity Debugger and start the program (unpause it).
+
+### Get the amount of bytes till EIP will be overwritten.
+
 
 
