@@ -266,6 +266,7 @@ After running the script, we go back to our windows vm and right click on the ES
 The bad characters are: \x00
 
 
+
 ### Find an address that we can pass into the eip to make it run our code
 
 We will not find an address that we could overwrite the eip with that it executes our code. To archieve that we will utilize the metasploit-framework again
