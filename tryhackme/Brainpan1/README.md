@@ -265,6 +265,19 @@ After running the script, we go back to our windows vm and right click on the ES
 
 The bad characters are: \x00
 
+
 ### Finding an address that we could pass into the eip to make it run our code
 
+We will not find an address that we could overwrite the eip with that it executes our code. To archieve that we will utilize the metasploit-framework again
 
+```
+/usr/share/metasploit-framework/tools/exploit/nasm_shell.rb
+```
+
+Now we enter **jmp esp**, which is an assembly instruction that will make the program continue execution on the code that is on the stack, which will be our payload.
+
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/472b692c-2f9b-4c1b-a47c-99ad37685a1f)
+
+This will output FFE4, which is the opcode equivalent of jmp esp. We will also note that down.
+
+Now we will use a module for Immunity Debugger, which you can download [here](https://github.com/corelan/mona/mona.py). Move this into this folder: C:\Program Files (x86)\Immunity Inc\Immunity Debugger\PyCommands
