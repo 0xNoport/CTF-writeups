@@ -194,5 +194,6 @@ This will overwrite the EIP with ZZZZ (in hex). To lookup what Z is in hex, we u
 As we can see in the manpage of ascii, the hex representation of Z is 5A, which means that the EIP must be (5A * 4) = 5A5A5A5A. This can be verified after running the python script and causing a segmentation fault again.
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/62c94619-bb6d-4ab8-9d82-a0e340218199)
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/1dd9fc7e-64ec-43d1-9fee-b651314b1aed)
 
 
