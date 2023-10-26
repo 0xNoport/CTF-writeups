@@ -189,5 +189,6 @@ except:
 
 This will overwrite the EIP with ZZZZ (in hex). To lookup what Z is in hex, we use the manpage for ascii:
 
-![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/de0575af-6f07-4ea4-ab52-9e0d585e417f)
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/88cc0891-cb80-48a5-a9a8-2f5a75cd5337)
+
 
