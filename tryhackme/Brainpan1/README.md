@@ -263,3 +263,4 @@ After running the script, we go back to our windows vm and right click on the ES
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/b8e87a6c-9710-4960-b13f-041f3d64d98e)
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/1bcfc708-659a-4add-b489-f8a0cb0ce2f1)
 
+The bad characters are: \x00
