@@ -261,3 +261,5 @@ except:
 After running the script, we go back to our windows vm and right click on the ESP register and proceed by selecting Follow in Dump. On the bottom-left-hand-corner we see 2 columns. In the right column are the ascii values of our bad characters that we inputed and on the left are the corresponding hex values. Now we need to find the start of our characters we sent, this should start at hex 01 and go to 7F. These hex values should be in the proper order and should always add 1 to the previous hex value. If this is the case, then the only bad character is \x00. Otherwise the hex value that would normally be at the position is also bad characters. We have to note them down for later use.  
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/b8e87a6c-9710-4960-b13f-041f3d64d98e)
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/1bcfc708-659a-4add-b489-f8a0cb0ce2f1)
+
