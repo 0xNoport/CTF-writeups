@@ -281,3 +281,10 @@ Now we enter **jmp esp**, which is an assembly instruction that will make the pr
 This will output FFE4, which is the opcode equivalent of jmp esp. We will also note that down.
 
 Now we will use a module for Immunity Debugger, which you can download [here](https://raw.githubusercontent.com/corelan/mona/master/mona.py). Move this into this folder: ```C:\Program Files (x86)\Immunity Inc\Immunity Debugger\PyCommands```
+
+Restart Immunity Debugger again. In white line on the bottom, type 
+```
+!mona modules
+```
+
+ This will list 
