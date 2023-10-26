@@ -170,6 +170,7 @@ We see that the EIP has this value 35724134. The EIP is the instruction pointer 
 
 This tells us that we need to send 524 bytes till we overwrite the EIP. 
 
+
 To proof this, we will modify the python script again:
 ```
 #!/usr/bin/env python3
@@ -185,3 +186,8 @@ try:
 except:
   print("Couldn't connct to our windows vm")
 ```
+
+This will overwrite the EIP with ZZZZ (in hex). To lookup what Z is in hex, we use the manpage for ascii:
+
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/de0575af-6f07-4ea4-ab52-9e0d585e417f)
+
