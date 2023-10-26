@@ -116,7 +116,7 @@ We don't get any output, which means it ran without any errors. On the windows V
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/ea43186d-4c3c-4909-beb8-c388c117d5b0)
 
 
-## Crafting our payload to get a shell on the target
+## Craft our payload to get a shell on the target
 
 Restart Immunity Debugger and start the program (unpause it).
 
@@ -266,7 +266,7 @@ After running the script, we go back to our windows vm and right click on the ES
 The bad characters are: \x00
 
 
-### Finding an address that we could pass into the eip to make it run our code
+### Find an address that we can pass into the eip to make it run our code
 
 We will not find an address that we could overwrite the eip with that it executes our code. To archieve that we will utilize the metasploit-framework again
 
