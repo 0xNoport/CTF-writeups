@@ -264,3 +264,7 @@ After running the script, we go back to our windows vm and right click on the ES
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/1bcfc708-659a-4add-b489-f8a0cb0ce2f1)
 
 The bad characters are: \x00
+
+### Finding an address that we could pass into the eip to make it run our code
+
+
