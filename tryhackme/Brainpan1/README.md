@@ -316,12 +316,26 @@ We will use a non staged, bind_tcp payload, because I had problems using the sta
 msfvenom -p windows/shell_bind_tcp RHOST=*windows_machine_ip* LPORT=1339 EXITFUNC=thread -f python -a x86 -b "\x00" -v shellcode
 ```
 **p** = \**payload type\*
+
+
 **RHOST**=\*target ip\*
+
+
 **LPORT**=\*port that is opened on the target that hosts the shell\*
+
+
 **EXITFUNC**=\*the shellcode will be executed in a thread on the target\*
+
+
 **f** = \*the language that the exploit is written in that the generated shellcode is in the correct format, e.g. in python there is no ; at the end of an instruction, but in C\*
+
+
 **a** = architecture
+
+
 **b** = bad characters (in this case we only found \x00)
+
+
 **v** = variable_name of the shellcode
 
 
