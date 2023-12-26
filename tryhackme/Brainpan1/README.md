@@ -430,3 +430,29 @@ After running the exploit, the port 1339 is open and we can connect to it:
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/39f9b4d3-02e9-48f5-bf84-0abecca70b1a)
 
 
+
+## Privilege Escalation
+
+Once connected to the target machine, we will upgrade our shell to get a more interactive shell:
+```
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+
+Any command we run is run by the user "puck". By running sudo -l, we see that we can run the binary anansi_util as root user without a password:
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/55d10779-c9f5-41f3-805c-bcd58aabcad1)
+
+We run the binary and find out that it opens the manual (man page), which we can use to get a root shell:
+
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/9edf15f7-69a5-42c0-b270-03a3ce3fb15b)
+
+
+Finally, we can enter
+
+```
+!/bin/bash
+```
+
+to get a root shell:
+
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/9cbd4bf0-d2be-4205-9bf3-8c013f167c19)
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/1dc7f8f5-4fc5-4075-94dc-ddc3ade49b18)
+
