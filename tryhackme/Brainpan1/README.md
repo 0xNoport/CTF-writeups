@@ -436,6 +436,8 @@ After running the exploit, the port 1339 is open and we can connect to it:
 Once connected to the target machine, we will upgrade our shell to get a more interactive shell:
 ```
 python3 -c 'import pty; pty.spawn("/bin/bash")'
+```
+
 
 Any command we run is run by the user "puck". By running sudo -l, we see that we can run the binary anansi_util as root user without a password:
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/55d10779-c9f5-41f3-805c-bcd58aabcad1)
