@@ -462,3 +462,8 @@ to get a root shell:
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/9cbd4bf0-d2be-4205-9bf3-8c013f167c19)
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/1dc7f8f5-4fc5-4075-94dc-ddc3ade49b18)
 
+
+
+## My opionion
+
+The box was pretty simple, was a lot of fun and taught me a few things. It's very beginner friendly, because there are no special bad characters and there was no struggle with too few space.
