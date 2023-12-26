@@ -288,4 +288,14 @@ Restart Immunity Debugger again. In white line on the bottom, type
 !mona modules
 ```
 
- This will list 
+ This will list all the libraries used by the executable "brainpan.exe" and the protections like ASLR (Adress Space Layout Randomization),.
+
+ Here we are looking for the executable that is being used that has the least protections, so the executables where the protections are set to False.
+
+ In this case brainpan.exe uses its own functions which is why it's listed here and has the least protections. We are looking for the least protections, because our plan is to put the "jmp esp" instruction into the eip register, which is the register that holds the address of the next instruction that will be executed. We need to find out the address of any "jmp esp" instruction, so we can put it into the instruction pointer (eip). Having the least protections enabled is good because finding the base address of this "jmp esp" instruction will be much easier. Now we will search for the appearances and base addresses of the jmp esp instruction (using its opcode equivalent "\xff\xe4") in the brainpan.exe binary itself (you can also use any other dll as long as it only has a few protections).  
+
+```
+!mona find -s "\xff\xe4" -m brainpan.exe
+```
+
+ 
