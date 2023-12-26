@@ -315,14 +315,14 @@ We will use a non staged, bind_tcp payload, because I had problems using the sta
 ```
 msfvenom -p windows/shell_bind_tcp RHOST=*windows_machine_ip* LPORT=1339 EXITFUNC=thread -f python -a x86 -b "\x00" -v shellcode
 ```
-p = \*payload type\*
-RHOST=\*target ip\*
-LPORT=\*port that is opened on the target that hosts the shell\*
-EXITFUNC=\*the shellcode will be executed in a thread on the target\*
-f = \*the language that the exploit is written in that the generated shellcode is in the correct format, e.g. in python there is no ; at the end of an instruction, but in C\*
-a = architecture
-b = bad characters (in this case we only found \x00)
-v = variable_name of the shellcode
+**p** = \**payload type\*
+**RHOST**=\*target ip\*
+**LPORT**=\*port that is opened on the target that hosts the shell\*
+**EXITFUNC**=\*the shellcode will be executed in a thread on the target\*
+**f** = \*the language that the exploit is written in that the generated shellcode is in the correct format, e.g. in python there is no ; at the end of an instruction, but in C\*
+**a** = architecture
+**b** = bad characters (in this case we only found \x00)
+**v** = variable_name of the shellcode
 
 
 So far this is our exploit.py:
@@ -442,9 +442,13 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 
 
 Any command we run is run by the user "puck". By running sudo -l, we see that we can run the binary anansi_util as root user without a password:
+
+
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/55d10779-c9f5-41f3-805c-bcd58aabcad1)
 
+
 We run the binary and find out that it opens the manual (man page), which we can use to get a root shell:
+
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/9edf15f7-69a5-42c0-b270-03a3ce3fb15b)
 
@@ -460,6 +464,8 @@ Finally, we can enter
 to get a root shell:
 
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/9cbd4bf0-d2be-4205-9bf3-8c013f167c19)
+
+
 ![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/1dc7f8f5-4fc5-4075-94dc-ddc3ade49b18)
 
 <br>
