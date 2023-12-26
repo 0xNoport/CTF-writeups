@@ -434,6 +434,8 @@ After running the exploit, the port 1339 is open and we can connect to it:
 ## Privilege Escalation
 
 Once connected to the target machine, we will upgrade our shell to get a more interactive shell:
+
+
 ```
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
@@ -449,9 +451,11 @@ We run the binary and find out that it opens the manual (man page), which we can
 
 Finally, we can enter
 
+
 ```
 !/bin/bash
 ```
+
 
 to get a root shell:
 
