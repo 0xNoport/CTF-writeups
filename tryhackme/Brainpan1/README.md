@@ -289,6 +289,7 @@ Restart Immunity Debugger again. In white line on the bottom, type
 ```
 
  This will list all the libraries used by the executable "brainpan.exe" and the protections like ASLR (Adress Space Layout Randomization),.
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/b16fa8c4-6dee-4b85-9692-63d3d80b96d5)
 
  Here we are looking for the executable that is being used that has the least protections, so the executables where the protections are set to False.
 
@@ -297,5 +298,9 @@ Restart Immunity Debugger again. In white line on the bottom, type
 ```
 !mona find -s "\xff\xe4" -m brainpan.exe
 ```
+
+![grafik](https://github.com/fortyfourh/CTF-writeups/assets/125758265/f50d1a77-5f95-43a0-99dc-94057eccd09d)
+
+
 
  
