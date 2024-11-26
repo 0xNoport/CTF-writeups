@@ -1,7 +1,7 @@
 # CTF-writeups
 
 Available writeup(s):
-HTB/Brainpan
+tryhackme/Brainpan
 
 
 This will contain mostly HackTheBox and TryHackMe capture the flag writeups.
